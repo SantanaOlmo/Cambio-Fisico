@@ -5,10 +5,9 @@
 1. [Visión General](#1-visión-general)
 2. [Dirección Tecnológica](./technology-direction.md)
 3. [Arquitectura y Estructura](./ARQUITECTURA.md)
-4. [API Reference](./API.md)
-5. [Modelo Mental](./product/mental-model.md)
-6. [Ingeniería — Sistema heredado](#ingeniería-—-sistema-heredado)
-7. [Archivo histórico](#archivo-histórico)
+4. [Modelo Mental](./product/mental-model.md)
+5. [Ingeniería — Sistema heredado](#ingeniería-—-sistema-heredado)
+6. [Archivo histórico](#archivo-histórico)
 
 ---
 
@@ -84,7 +83,8 @@ Los siguientes documentos pertenecen a fases anteriores del proyecto y se conser
 
 ## Ingeniería — Sistema heredado
 
-Los siguientes documentos son referencias técnicas del software y bases de datos construidos para la aplicación web anterior de CambioFísico. **No deben utilizarse para diseñar el modelo de dominio futuro, planificar la base de datos de la aplicación móvil, definir producto o UX, ni cargarse como contexto por defecto**:
+Los siguientes documentos son referencias técnicas del software y bases de datos construidos para la aplicación web anterior de CambioFísico. **No deben utilizarse para diseñar el modelo de dominio futuro, planificar la base de datos de la aplicación móvil, definir producto, UX, arquitectura futura o aplicación móvil, ni cargarse como contexto por defecto**:
 
 *   [legacy-web-development.md](./engineering/legacy-web-development.md): Guía de mantenimiento de la aplicación web heredada (arranque, depuración, comandos y convenciones del código existente). No es documentación general del proyecto.
+*   [legacy-web-api.md](./engineering/legacy-web-api.md): Referencia de los endpoints HTTP del backend Express existente. No define contratos futuros del producto.
 *   [legacy-web-schema.md](./engineering/legacy-web-schema.md): Esquema de base de datos SQLite e interfaces TypeScript de la aplicación web heredada.

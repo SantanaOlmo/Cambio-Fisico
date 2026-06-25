@@ -22,9 +22,9 @@ CambioFisico/
 │   ├── README.md
 │   ├── technology-direction.md
 │   ├── ARQUITECTURA.md
-│   ├── API.md
 │   └── engineering/
 │       ├── legacy-web-development.md
+│       ├── legacy-web-api.md
 │       └── legacy-web-schema.md
 │
 ├── backend/
