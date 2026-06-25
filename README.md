@@ -1,105 +1,62 @@
-# CambioFísico — Seguimiento 90 Días
+# CambioFísico — Plataforma Modular Personal
 
-App web local para registrar y analizar tu progreso físico durante 90 días.
-Todos los datos se almacenan **únicamente en tu ordenador**. Sin nube, sin cuentas.
+Plataforma modular personal-first para registrar, analizar y optimizar el bienestar.
+Todos los datos se almacenan **únicamente en tu ordenador** de forma local. Sin nube, sin anuncios.
 
 ---
 
 ## Requisitos previos
 
 - **Node.js** v18 o superior → https://nodejs.org
-- **npm** (incluido con Node.js)
+- **pnpm** (gestor de paquetes para monorrepositorios)
 
-Verifica que tienes Node instalado:
+Instala pnpm si no lo tienes:
 ```bash
-node --version   # debe mostrar v18 o superior
-npm --version
+npm install -g pnpm
 ```
 
 ---
 
 ## Instalación
 
-Abre una terminal en la carpeta del proyecto `CambioFisico/`.
-
-### 1. Instalar dependencias del backend
+En la raíz del proyecto `CambioFisico/` ejecuta:
 
 ```bash
-cd backend
-npm install
-```
-
-### 2. Instalar dependencias del frontend
-
-```bash
-cd ../frontend
-npm install
+pnpm install
 ```
 
 ---
 
 ## Ejecutar en desarrollo
 
-Necesitas **dos terminales** abiertas simultáneamente.
-
-### Terminal 1 — Backend (API)
+Levanta el frontend y el backend concurrentemente desde la raíz del monorrepo:
 
 ```bash
-cd backend
-npm run dev
+pnpm dev
 ```
 
-El servidor arranca en **http://localhost:3001**
-La base de datos se crea automáticamente en `../data/fitness.sqlite`
-Las fotos se guardan en `../data/photos/`
-
-Verifica que funciona:
-```
-http://localhost:3001/api/health
-```
-
-### Terminal 2 — Frontend (Interfaz)
-
-```bash
-cd frontend
-npm run dev
-```
-
-La app abre en **http://localhost:5173**
+- **Frontend:** Servido en **http://localhost:5173** (Mapeado en `apps/web/`)
+- **Backend (API Legacy):** Servido en **http://localhost:3001** (Mapeado en `apps/api-legacy/`)
+- **Base de datos:** Generada automáticamente en `/data/fitness.sqlite` en la raíz.
+- **Fotos de progreso:** Almacenadas en `/data/photos/` en la raíz.
 
 ---
 
-## Estructura del proyecto
+## Estructura del proyecto (Monorrepo)
 
 ```
 CambioFisico/
-├── docs/               # Documentación completa del proyecto
-│   ├── README.md       # Índice de documentación
-│   ├── ARQUITECTURA.md # Arquitectura del sistema y flujo de datos
-│   └── TECNOLOGIAS.md  # Stack tecnológico y dependencias
+├── apps/               # Aplicaciones del producto
+│   ├── web/            # Frontend (React + Vite + TypeScript)
+│   └── api-legacy/     # Backend legacy (Node + Express + sql.js)
 │
-├── backend/            # Node.js + Express + sql.js (SQLite WASM)
-│   ├── src/
-│   │   ├── db/         # Conexión, schema y helpers SQLite
-│   │   ├── repositories/ # Capa de datos pura (SQL)
-│   │   ├── services/   # Lógica de negocio (parseo, validación)
-│   │   ├── controllers/# Controladores HTTP
-│   │   ├── routes/     # Enrutadores Express
-│   │   └── middleware/ # Manejador de errores
-│   └── server.ts
+├── packages/           # Paquetes compartidos y configuraciones comunes (futuro shared)
 │
-├── frontend/           # React + TypeScript + Tailwind CSS
-│   └── src/
-│       ├── api/        # Cliente fetch tipado
-│       ├── components/ # Componentes (layout, entries, dashboard, recetas)
-│       ├── hooks/      # Hooks de React (useEntries, useRecipes, etc.)
-│       ├── pages/      # Páginas principales (Dashboard, recetas, etc.)
-│       ├── types/      # Definición de tipos
-│       └── utils/      # Funciones auxiliares
+├── docs/               # Documentación completa y ADRs de arquitectura
 │
-└── data/               # Generado automáticamente (Persistencia)
-    ├── fitness.sqlite  # Base de datos SQLite
-    └── photos/         # Fotos de progreso
+├── data/               # Generado automáticamente (Persistencia, ignorado por Git)
+│   ├── fitness.sqlite  # Base de datos SQLite
+│   └── photos/         # Fotos corporales de progreso
 ```
 
 ---

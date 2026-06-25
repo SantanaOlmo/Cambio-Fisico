@@ -24,7 +24,7 @@ export async function initializeDatabase(): Promise<void> {
   const SQL = await initSqlJs({
     // Point to the WASM file shipped alongside sql.js in node_modules
     locateFile: (file: string) =>
-      path.join(process.cwd(), 'node_modules', 'sql.js', 'dist', file),
+      path.join(path.dirname(require.resolve('sql.js')), file),
   });
 
   if (fs.existsSync(DB_PATH)) {
