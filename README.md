@@ -1,153 +1,175 @@
-# CambioFísico — Plataforma Modular Personal
+# CambioFísico
 
-Plataforma modular personal-first para registrar, analizar y optimizar el bienestar.
-Todos los datos se almacenan **únicamente en tu ordenador** de forma local. Sin nube, sin anuncios.
+Herramienta personal local-first para registrar experiencias, conservar memoria y ganar perspectiva sobre la propia vida.
+
+CambioFísico ayuda a una persona a mantenerse consciente de su situación, comprender cómo está evolucionando y decidir con mayor claridad hacia dónde quiere dirigirse.
+
+No es simplemente una aplicación de fitness, un contador de calorías ni un diario de salud.
+
+> La memoria existe para construir el futuro, no para archivar el pasado.
 
 ---
 
-## Requisitos previos
+## Estado actual
 
-- **Node.js** v18 o superior → https://nodejs.org
-- **pnpm** (gestor de paquetes para monorrepositorios)
+El proyecto se encuentra en transición.
 
-Instala pnpm si no lo tienes:
+Actualmente existe una aplicación web local compuesta por:
+
+* una interfaz web con React y Vite;
+* una API local con Express;
+* persistencia SQLite basada en `sql.js`;
+* recetas, entradas diarias, fotos y exportaciones locales.
+
+Este sistema sigue siendo ejecutable y útil como referencia, prototipo y fuente de datos heredada.
+
+La dirección del producto es construir progresivamente una aplicación móvil local-first. La aplicación móvil todavía no está implementada y no debe asumirse como parte ejecutable del repositorio actual.
+
+En esta etapa no forman parte del producto:
+
+* backend remoto;
+* autenticación;
+* cuentas de usuario;
+* sincronización multi-dispositivo;
+* nube obligatoria;
+* IA avanzada;
+* wearables;
+* funcionalidades sociales.
+
+---
+
+## Ejecutar la aplicación web heredada
+
+### Requisitos
+
+* Node.js 18 o superior.
+* pnpm.
+
+Para instalar pnpm globalmente:
+
 ```bash
 npm install -g pnpm
 ```
 
----
+### Instalación
 
-## Instalación
-
-En la raíz del proyecto `CambioFisico/` ejecuta:
+Desde la raíz del repositorio:
 
 ```bash
 pnpm install
 ```
 
----
+### Desarrollo
 
-## Ejecutar en desarrollo
-
-Levanta el frontend y el backend concurrentemente desde la raíz del monorrepo:
+Para iniciar la aplicación web y la API local:
 
 ```bash
 pnpm dev
 ```
 
-- **Frontend:** Servido en **http://localhost:5173** (Mapeado en `apps/web/`)
-- **Backend (API Legacy):** Servido en **http://localhost:3001** (Mapeado en `apps/api-legacy/`)
-- **Base de datos:** Generada automáticamente en `/data/fitness.sqlite` en la raíz.
-- **Fotos de progreso:** Almacenadas en `/data/photos/` en la raíz.
+Servicios disponibles durante el desarrollo:
+
+* Aplicación web: `http://localhost:5173`
+* API local heredada: `http://localhost:3001`
+
+La guía detallada para ejecutar, depurar y mantener este sistema está en:
+
+[`docs/engineering/legacy-web-development.md`](docs/engineering/legacy-web-development.md)
 
 ---
 
-## Estructura del proyecto (Monorrepo)
+## Datos locales
 
+La aplicación web heredada guarda sus datos localmente en la carpeta `data/` de la raíz del repositorio.
+
+```text
+data/
+├── fitness.sqlite
+└── photos/
 ```
+
+Esta carpeta no debe versionarse en Git.
+
+Para crear una copia de seguridad del sistema heredado, copia la carpeta `data/` completa a una ubicación segura.
+
+El formato actual de estos datos pertenece al sistema web heredado. No debe asumirse que será el modelo de persistencia definitivo de la futura aplicación móvil.
+
+Consulta:
+
+* [`docs/engineering/legacy-web-schema.md`](docs/engineering/legacy-web-schema.md)
+* [`docs/engineering/legacy-web-development.md`](docs/engineering/legacy-web-development.md)
+
+---
+
+## Estructura del repositorio
+
+```text
 CambioFisico/
-├── apps/               # Aplicaciones del producto
-│   ├── web/            # Frontend (React + Vite + TypeScript)
-│   └── api-legacy/     # Backend legacy (Node + Express + sql.js)
+├── apps/
+│   ├── web/                  Aplicación web heredada
+│   └── api-legacy/           API Express heredada
 │
-├── packages/           # Paquetes compartidos y configuraciones comunes (futuro shared)
+├── packages/                 Código compartido cuando exista y esté justificado
 │
-├── docs/               # Documentación completa y ADRs de arquitectura
+├── docs/
+│   ├── product/              Filosofía, modelo mental y discoveries
+│   ├── engineering/          Dirección técnica y sistema heredado
+│   ├── adr/                  Decisiones técnicas registradas
+│   └── archive/              Documentación histórica
 │
-├── data/               # Generado automáticamente (Persistencia, ignorado por Git)
-│   ├── fitness.sqlite  # Base de datos SQLite
-│   └── photos/         # Fotos corporales de progreso
+└── data/                     Datos locales generados por el sistema heredado
 ```
 
----
-
-## API Endpoints
-
-### Entradas Diarias (`/api/entries`)
-| Método | Ruta | Descripción |
-|--------|------|-------------|
-| GET | `/api/entries` | Todas las entradas |
-| GET | `/api/entries/:id` | Entrada por ID |
-| POST | `/api/entries` | Crear entrada (multipart) |
-| PUT | `/api/entries/:id` | Editar entrada (multipart) |
-| DELETE | `/api/entries/:id` | Borrar entrada + foto |
-
-### Recetas (`/api/recipes`)
-| Método | Ruta | Descripción |
-|--------|------|-------------|
-| GET | `/api/recipes` | Todas las recetas (filtro opcional por `?q=`) |
-| GET | `/api/recipes/:id` | Detalle de receta por ID |
-| POST | `/api/recipes` | Crear receta (JSON) |
-| PUT | `/api/recipes/:id` | Editar receta (JSON) |
-| DELETE | `/api/recipes/:id` | Eliminar receta |
-
-### Multimedia y Exportación (`/api/photos` y `/api/export`)
-| Método | Ruta | Descripción |
-|--------|------|-------------|
-| GET | `/api/photos/:filename` | Servir foto de progreso |
-| POST | `/api/uploads/photo` | Subir foto independiente |
-| GET | `/api/export/json` | Exportar datos a JSON |
-| GET | `/api/export/csv` | Exportar datos a CSV |
+No se deben crear paquetes, aplicaciones o capas de infraestructura por anticipación. La estructura crecerá a partir de necesidades reales de producto y uso.
 
 ---
 
-## Backup de datos
+## Documentación
 
-Toda la información está en la carpeta `data/`:
+### Producto
 
-```
-CambioFisico/
-└── data/
-    ├── fitness.sqlite   ← base de datos completa (entradas y recetas)
-    └── photos/          ← todas las fotos de progreso
-```
+* [`ai_context.md`](ai_context.md)
+  Contexto operativo del proyecto para desarrollo asistido por IA.
 
-**Para hacer backup:** copia la carpeta `data/` completa a un lugar seguro (disco externo, otra carpeta, etc.).
+* [`docs/product/mental-model.md`](docs/product/mental-model.md)
+  Filosofía del producto: persona, experiencias, memoria, contexto, comprensión y perspectiva.
 
-**Para restaurar:** pega la carpeta `data/` en la raíz del proyecto y ejecuta el backend normalmente.
+* [`docs/product/discoveries/`](docs/product/discoveries/)
+  Descubrimientos provisionales que influyen en decisiones de producto.
 
----
+### Ingeniería — Dirección vigente
 
-## Exportar datos
+* [`docs/engineering/technology-direction.md`](docs/engineering/technology-direction.md)
+  Dirección tecnológica actual y criterios para introducir dependencias o infraestructura.
 
-Desde la sección **Exportar** de la app puedes descargar:
+* [`docs/adr/`](docs/adr/)
+  Decisiones técnicas registradas. Los ADRs deben interpretarse según su estado actual y pueden requerir revisión cuando contradigan la dirección de producto vigente.
 
-- **CSV** — compatible con Excel / Google Sheets (incluye BOM UTF-8)
-- **JSON** — formato estructurado con todos los campos
+### Ingeniería — Sistema heredado
 
-O directamente desde el navegador:
-- http://localhost:3001/api/export/csv
-- http://localhost:3001/api/export/json
+* [`docs/engineering/legacy-web-development.md`](docs/engineering/legacy-web-development.md)
+  Cómo ejecutar, depurar y mantener la aplicación web existente.
 
----
+* [`docs/engineering/legacy-web-schema.md`](docs/engineering/legacy-web-schema.md)
+  Esquema SQLite e interfaces del sistema web heredado.
 
-## Datos de seguimiento registrados
+* [`docs/engineering/legacy-web-api.md`](docs/engineering/legacy-web-api.md)
+  Endpoints HTTP del backend Express heredado.
 
-Cada entrada diaria incluye:
-
-- **Básicos:** Fecha, peso (kg)
-- **Sueño:** Horas de sueño y calidad (escala 1–5)
-- **Actividad:** Tipo de entrenamiento (con autocompletado inteligente y deportes personalizados), duración (minutos) y cardio realizado (Sí/No)
-- **Nutrición:** Desplegable e inputs de comida independientes para **Desayuno**, **Almuerzo**, **Cena** y **Otro / Snacks** (con soporte de hashtags de recetas y autocompletado mediante `#`)
-- **Bienestar subjetivo:** Hinchazón abdominal, energía, hambre, estado de ánimo (escala 1–5)
-- **Notas y Multimedia:** Notas libres y foto de progreso (JPEG/PNG/WebP, máx. 10 MB)
+Los documentos `legacy-web-*` describen el sistema existente. No son la fuente de verdad para producto, UX, modelo de dominio, aplicación móvil ni arquitectura futura.
 
 ---
 
-## Sistema de Recetas y Hashtags
+## Principios de desarrollo
 
-La app incluye un **recetario local** en el que puedes:
-- Crear y subir tus recetas favoritas en formato **Markdown**.
-- Importar directamente ficheros `.md` locales mediante el lector integrado.
-- Asignarles etiquetas (tags) y slugs amigables para hashtags (ej. `#pollo-al-curry`).
-- En las entradas de comidas, al escribir `#` se desplegará una lista de sugerencias de autocompletado para vincular recetas.
-- En la visualización de tus días, los hashtags válidos se renderizan como enlaces directos a sus correspondientes recetas.
+Antes de proponer o implementar una funcionalidad, debe poder responderse:
 
----
+1. ¿Reduce fricción para una persona que quiere registrar algo real?
+2. ¿Ayuda a conservar memoria, crear contexto o aportar perspectiva?
+3. ¿Respeta privacidad, autonomía y funcionamiento local?
+4. ¿Simplifica el producto y el código en lugar de añadir una hipótesis futura?
+5. ¿Responde a una necesidad validada o solo a una posibilidad técnica?
 
-## Datos iniciales configurados
+Registrar no es el objetivo. Comprender sí.
 
-- Altura: 1,72 m
-- Peso inicial: 76,5 kg  
-- Objetivo: 90 días
-- Meta: reducir grasa abdominal, volver al gimnasio, mejorar postura y rutina
+La experiencia debe sentirse integrada y continua para la persona, aunque el código utilice estructuras técnicas separadas cuando aporten claridad.
