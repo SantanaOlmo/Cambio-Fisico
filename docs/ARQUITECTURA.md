@@ -23,8 +23,9 @@ CambioFisico/
 │   ├── technology-direction.md
 │   ├── ARQUITECTURA.md
 │   ├── API.md
-│   ├── DESARROLLO.md
-│   └── engineering/legacy-web-schema.md
+│   └── engineering/
+│       ├── legacy-web-development.md
+│       └── legacy-web-schema.md
 │
 ├── backend/
 │   ├── server.ts                  ← Punto de entrada: arranca Express, init DB
