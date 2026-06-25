@@ -5,10 +5,10 @@
 1. [Visión General](#1-visión-general)
 2. [Dirección Tecnológica](./technology-direction.md)
 3. [Arquitectura y Estructura](./ARQUITECTURA.md)
-4. [Modelos de Datos](./MODELOS.md)
-5. [API Reference](./API.md)
-6. [Guía de Desarrollo](./DESARROLLO.md)
-7. [Modelo Mental](./product/mental-model.md)
+4. [API Reference](./API.md)
+5. [Guía de Desarrollo](./DESARROLLO.md)
+6. [Modelo Mental](./product/mental-model.md)
+7. [Ingeniería — Sistema heredado](#ingeniería-—-sistema-heredado)
 8. [Archivo histórico](#archivo-histórico)
 
 ---
@@ -80,3 +80,11 @@ Los siguientes documentos pertenecen a fases anteriores del proyecto y se conser
 
 *   [product-discovery-legacy.md](./archive/product-discovery-legacy.md): Documento de Product Discovery original (MVP inicial y roadmap legacy).
 *   [product-manifesto-legacy.md](./archive/product-manifesto-legacy.md): Manifiesto de producto original (visión inicial modular y roadmap de negocio legacy).
+
+---
+
+## Ingeniería — Sistema heredado
+
+Los siguientes documentos son referencias técnicas del software y bases de datos construidos para la aplicación web anterior de CambioFísico. **No deben utilizarse para diseñar el modelo de dominio futuro, planificar la base de datos de la aplicación móvil, ni cargarse como contexto por defecto**:
+
+*   [legacy-web-schema.md](./engineering/legacy-web-schema.md): Esquema de base de datos SQLite e interfaces TypeScript de la aplicación web heredada.
