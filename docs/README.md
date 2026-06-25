@@ -8,6 +8,7 @@
 4. [Modelos de Datos](./MODELOS.md)
 5. [API Reference](./API.md)
 6. [Guía de Desarrollo](./DESARROLLO.md)
+7. [Modelo Mental](./product/mental-model.md)
 
 ---
 
