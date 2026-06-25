@@ -1,6 +1,6 @@
 # Laboratorio de Descubrimientos de Producto
 
-Este directorio actúa como un **laboratorio de ideas en fase de validación**. Aquí registramos descubrimientos importantes sobre los principios, la filosofía y la experiencia de usuario de **CambioFísico** antes de consolidarlos en los documentos estables de gobernanza (`PRODUCT_MANIFESTO.md`, `PRODUCT_DISCOVERY.md` o `ai_context.md`).
+Este directorio actúa como un **laboratorio de ideas en fase de validación**. Aquí registramos descubrimientos importantes sobre los principios, la filosofía y la experiencia de usuario de **CambioFísico** antes de consolidarlos en los documentos estables de gobernanza (`PRODUCT_MANIFESTO.md`, `ai_context.md` o `docs/product/mental-model.md`).
 
 ---
 

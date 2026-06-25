@@ -9,6 +9,7 @@
 5. [API Reference](./API.md)
 6. [Guía de Desarrollo](./DESARROLLO.md)
 7. [Modelo Mental](./product/mental-model.md)
+8. [Archivo histórico](#archivo-histórico)
 
 ---
 
@@ -70,3 +71,11 @@ cd CambioFisico/frontend && npm run dev
 # Abrir en el navegador:
 # http://localhost:5173
 ```
+
+---
+
+## Archivo histórico
+
+Los siguientes documentos pertenecen a fases anteriores del proyecto y se conservan únicamente como registro de la evolución histórica de CambioFísico. **No deben utilizarse como fuente de verdad para el desarrollo, producto, UX o arquitectura, y no deben cargarse como contexto por defecto para IAs**:
+
+*   [product-discovery-legacy.md](./archive/product-discovery-legacy.md): Documento de Product Discovery original (MVP inicial y roadmap legacy).

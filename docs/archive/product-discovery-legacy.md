@@ -1,3 +1,21 @@
+> [!WARNING]
+> ## Documento histórico — No usar como fuente de verdad
+>
+> Este documento pertenece a una fase anterior de CambioFísico.
+>
+> Contiene hipótesis, propuestas y decisiones que pueden estar obsoletas, contradichas o pendientes de validación.
+>
+> No debe utilizarse como fuente de verdad para producto, UX, arquitectura ni implementación.
+>
+> Las fuentes vigentes son:
+>
+> - `ai_context.md`
+> - `docs/product/mental-model.md`
+> - `docs/product/discoveries/`
+> - `docs/adr/`
+>
+> Se conserva únicamente como registro histórico de la evolución del proyecto.
+
 # Product Discovery & Domain Design — CambioFísico
 
 Este documento representa la constitución conceptual y la definición de producto de **CambioFísico**. Ha sido redactado y evaluado colectivamente por nuestro equipo interdisciplinar (**Product Manager, Staff Product Engineer, Software Architect, UX Designer y Domain Expert**) para guiar las decisiones de producto, arquitectura y UX a largo plazo.
@@ -142,7 +160,7 @@ Los módulos encapsulan el comportamiento específico de cada dominio consumiend
 
 ---
 
-## 10. Diseño del Dominio Conceptual (DDD)
+## 10. Diseños del Dominio Conceptual (DDD)
 
 Para garantizar un acoplamiento débil que permita la modularidad, CambioFísico se estructura bajo cuatro **Contextos Acotados (Bounded Contexts)**. Los contextos se comunican mediante Value Objects e identificadores de referencia (`UUID`), nunca mediante accesos directos a base de datos cruzados.
 
