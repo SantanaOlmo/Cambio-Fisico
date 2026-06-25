@@ -9,9 +9,10 @@ Este directorio actúa como un **laboratorio de ideas en fase de validación**. 
 | ID | Descubrimiento | Estado | Fecha | Descripción Breve |
 | :--- | :--- | :--- | :--- | :--- |
 | **D001** | [La IA como espejo](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D001-ia-como-espejo.md) | Provisional | 2026-06-25 | La IA no debe definir o etiquetar al usuario; debe actuar como un reflejo neutro y estructurado. |
-| **D002** | [La importancia emerge](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D002-la-importancia-emerge.md) | Provisional | 2026-06-25 | La relevancia de un acontecimiento se calcula dinámicamente según la consistencia y relaciones, no mediante inputs manuales. |
-| **D003** | [Construir el futuro](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D003-construir-el-futuro.md) | Provisional | 2026-06-25 | La plataforma prioriza la acción y la toma de mejores decisiones hoy frente al mero almacenamiento del pasado. |
-| **D004** | [Registro por etapa de vida](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D004-registro-etapa-vida.md) | Provisional | 2026-06-25 | El usuario monitoriza únicamente aquello que está construyendo activamente en su etapa vital actual. |
+| **D002** | [La importancia emerge](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D002-la-importancia-emerge.md) | Provisional | 2026-06-25 | La relevancia se descubre mediante señales acumuladas (repetición, retorno emocional, contexto), no inputs manuales. |
+| **D003** | [Construir el futuro](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D003-construir-el-futuro.md) | Provisional | 2026-06-25 | La plataforma funciona como superficie de claridad para actuar en el presente en vez de archivar el pasado. |
+| **D004** | [Adaptabilidad al foco vital](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D004-registro-etapa-vida.md) | Provisional | 2026-06-25 | La experiencia se expande o contrae para adaptarse al foco vital prioritario del usuario en cada etapa. |
+| **D005** | [Espejo, no definición](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D005-espejo-no-definicion.md) | Provisional | 2026-06-25 | La plataforma no califica ni encasilla al usuario; le devuelve una perspectiva rica y honesta para decidir por sí mismo. |
 
 ---
 
