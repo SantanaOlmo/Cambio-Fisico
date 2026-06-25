@@ -1,4 +1,4 @@
-# ADR-006: Elección de Expo para el Desarrollo de la Aplicación Móvil
+# ADR-003: Elección de Expo para el Desarrollo Móvil
 
 *   **Estado:** Aprobado
 *   **Fecha:** 2026-06-25
@@ -6,16 +6,16 @@
 ---
 
 ## Contexto
-El roadmap del producto CambioFísico contempla lanzar una aplicación móvil nativa a futuro (inicialmente en Android, con miras a iOS). El desarrollo móvil nativo clásico (Kotlin/Swift) requiere duplicar el código, la lógica y los tipos, lo cual es ineficiente para equipos reducidos.
+El roadmap del producto CambioFísico contempla lanzar una aplicación móvil nativa (inicialmente en Android, con miras a iOS). El desarrollo nativo clásico (Kotlin/Swift) requiere duplicar el código, la lógica y los tipos, lo cual es ineficiente para el proyecto.
 
 ## Problema
-¿Qué framework o tecnología móvil utilizar para construir la aplicación nativa optimizando el coste de desarrollo y maximizando la reutilización de código web existente?
+¿Qué tecnología móvil utilizar para construir la aplicación nativa optimizando el coste de desarrollo y maximizando la reutilización de código web existente en el monorepo?
 
 ## Alternativas Evaluadas
 
-1.  **Flutter:**
-    *   *Ventajas:* Rendimiento excelente y consistencia visual perfecta entre Android e iOS.
-    *   *Inconvenientes:* Requiere programar en Dart, lo que impide compartir tipos TypeScript y validaciones de formulario con el monorepo web y backend.
+1.  **Desarrollo Nativo (Kotlin/Swift):**
+    *   *Ventajas:* Rendimiento y acceso a APIs del sistema nativo sin intermediarios.
+    *   *Inconvenientes:* Duplicidad de código y esfuerzo técnico.
 2.  **React Native CLI:**
     *   *Ventajas:* Acceso completo a APIs nativas y control absoluto de la configuración nativa de Xcode/Android Studio.
     *   *Inconvenientes:* Configuración compleja, requiere gestionar dependencias nativas complejas y compilar localmente con emuladores pesados de forma obligatoria.

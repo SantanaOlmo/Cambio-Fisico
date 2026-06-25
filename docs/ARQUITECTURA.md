@@ -245,3 +245,72 @@ El panel de control (`DashboardPage.tsx`) agrega una sección de **Frecuencia de
 *   Cada elemento tiene una **barra de progreso visual de fondo** que representa su porcentaje de consumo relativo al elemento número uno.
 *   Permite hacer clic directo en las recetas vinculadas para ver sus detalles.
 
+---
+
+## Principios Fundamentales de Ingeniería
+
+Cualquier propuesta o modificación de código debe evaluarse de acuerdo con las siguientes directrices:
+
+1.  **Offline First:** Toda funcionalidad principal de registro y consulta de datos debe operar sin conexión de forma predeterminada. La nube es un añadido futuro opcional, no una dependencia obligatoria.
+2.  **API First:** La verdad y las reglas de negocio viven exclusivamente en el backend (API). Los clientes son capas de presentación y persistencia local sin lógica pesada de negocio.
+3.  **Shared Contracts (Contratos Compartidos):** Los tipos de datos TypeScript y esquemas de validación Zod se mantienen en un único paquete común (`packages/shared`). Cero duplicación.
+4.  **Type Safety Estricto:** Evitar el uso de `any` o de casteos inseguros. Toda comunicación debe estar fuertemente tipada en tiempo de compilación.
+5.  **Clean Architecture:** El dominio, la infraestructura, la presentación y la persistencia de datos deben mantenerse desacoplados. Ningún componente visual React contendrá código SQL o llamadas fetch directas.
+6.  **Evolución Gradual:** No se realizarán migraciones destructivas (Big Bang). Express y NestJS coexisten y se portan progresivamente. SQLite se mantiene local y PostgreSQL queda bloqueado hasta la fase multiusuario.
+7.  **Simplicidad (Evitar Overengineering):** Elegir siempre la solución más simple que funcione sin limitar la evolución futura.
+
+---
+
+## Evolución Arquitectónica por Fases
+
+El crecimiento del producto está estructurado en 4 fases incrementales para asegurar un desarrollo sostenible:
+
+```mermaid
+graph TD
+    subgraph Fase 1: Prototipo Local (Fase Actual)
+        A1[React Web] --> A2[Express API]
+        A2 --> A3[(sqlite.js WASM)]
+    end
+
+    subgraph Fase 2: Estructura Profesional
+        B1[React Web]
+        B2[Expo Mobile]
+        B1 & B2 --> B3[NestJS API incremental]
+        B3 --> B4[(Prisma + SQLite Local)]
+        B3 --> B5[shared-package]
+    end
+
+    subgraph Fase 3: Multiusuario y Sincronización
+        C1[React Web]
+        C2[Expo Mobile]
+        C1 & C2 --> C3[NestJS API]
+        C3 --> C4[Autenticación / Cookies]
+        C3 --> C5[Sync Manager LWW]
+        C3 --> C6[(Prisma + PostgreSQL)]
+        C3 --> C7[AWS S3 / Storage]
+    end
+
+    subgraph Fase 4: Producto SaaS
+        D1[Web & Mobile] --> D2[NestJS API / Workers]
+        D2 --> D3[SaaS Billing Stripe]
+        D2 --> D4[(PostgreSQL Replicas)]
+        D2 --> D5[Observabilidad Pino / OTel]
+    end
+
+    Fase 1 --> Fase 2
+    Fase 2 --> Fase 3
+    Fase 3 --> Fase 4
+```
+
+---
+
+## Non-Goals (Tecnologías Descartadas Temporalmente)
+
+Para evitar la complejidad prematura, se excluyen explícitamente las siguientes tecnologías del roadmap inmediato:
+*   **Orquestadores de contenedores (Kubernetes):** Dev/Prod se gestiona con Docker y Docker Compose simple.
+*   **Arquitecturas de Microservicios:** Mantenemos un monolito modular con inyección de dependencias en NestJS.
+*   **CQRS y Event Sourcing (Kafka, RabbitMQ):** SQLite y PostgreSQL manejan lecturas y escrituras mediante Prisma de forma directa y síncrona.
+*   **Cachés distribuidas (Redis) o NoSQL (MongoDB):** Indexación y persistencia relacional pura.
+*   **Serverless complejo (AWS Lambda):** Mantenemos servidores backend persistentes en ejecución.
+
+
