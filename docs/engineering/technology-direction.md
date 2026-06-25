@@ -28,7 +28,7 @@
 
 ---
 
-## Dependencias del backend (`backend/package.json`)
+## Dependencias del backend (`apps/api-legacy/package.json`)
 
 ### Producción
 | Paquete | Uso |
@@ -49,7 +49,7 @@
 
 ---
 
-## Dependencias del frontend (`frontend/package.json`)
+## Dependencias del frontend (`apps/web/package.json`)
 
 ### Producción
 | Paquete | Uso |
@@ -92,9 +92,9 @@ Los iconos de la aplicación son servidos de forma 100% local sin depender de CD
 
 ### Ubicación de los recursos
 - Los archivos `.svg` individuales están almacenados en:  
-  `frontend/src/assets/icons/`
+  `apps/web/src/assets/icons/`
 - El componente unificado de carga de iconos y tipado estático se encuentra en:  
-  `frontend/src/components/icons/Icon.tsx` (con su punto de entrada en `frontend/src/components/icons/index.ts`).
+  `apps/web/src/components/icons/Icon.tsx` (con su punto de entrada en `apps/web/src/components/icons/index.ts`).
 
 ### Características del componente `<Icon />`
 - **Tipado estricto:** El componente tiene la prop `name` tipada estrictamente con una unión de los nombres de los iconos locales válidos (`IconName`).
@@ -102,10 +102,10 @@ Los iconos de la aplicación son servidos de forma 100% local sin depender de CD
 
 ### Cómo añadir un nuevo icono
 1. **Obtener el SVG:** Busca el icono deseado en la librería Lucide (o cualquier otro set de iconos SVG consistentes de 24x24 con viewBox `"0 0 24 24"`).
-2. **Guardar el archivo:** Descárgalo y guárdalo como un archivo `.svg` individual en la carpeta `frontend/src/assets/icons/` utilizando nomenclatura **kebab-case** (ej. `mi-nuevo-icono.svg`).
+2. **Guardar el archivo:** Descárgalo y guárdalo como un archivo `.svg` individual en la carpeta `apps/web/src/assets/icons/` utilizando nomenclatura **kebab-case** (ej. `mi-nuevo-icono.svg`).
 3. **Asegurar currentColor:** Edita el archivo SVG y asegúrate de que tiene los atributos necesarios para heredar estilos (ej. `stroke="currentColor"` y sin colores fijos de relleno/trazo en los paths que impidan el control por clases CSS).
 4. **Registrar el icono en el componente:**  
-   Edita `frontend/src/components/icons/Icon.tsx`:
+   Edita `apps/web/src/components/icons/Icon.tsx`:
    - Añade el import estático con la query `?raw` en la parte superior:
      ```typescript
      import miNuevoIcono from '../../assets/icons/mi-nuevo-icono.svg?raw';
@@ -160,7 +160,7 @@ A continuación se detalla qué iconos se renderizan a través del nuevo compone
 | `pages/DashboardPage.tsx` | `scale`, `flame`, `moon`, `dumbbell`, `droplets`, `calendar`, `zap`, `utensils` | Estadísticas del dashboard (peso, racha, sueño, hinchazón, entrenamiento, comidas). |
 
 ### Cómo modificar visualmente un SVG existente
-1. Localiza el archivo `.svg` correspondiente en `frontend/src/assets/icons/`.
+1. Localiza el archivo `.svg` correspondiente en `apps/web/src/assets/icons/`.
 2. Edítalo directamente utilizando un editor de texto o una herramienta de edición vectorial.
 3. Asegúrese de mantener la estructura y de que use `stroke="currentColor"` para no perder la compatibilidad de estilos dinámicos de color con Tailwind CSS.
 
@@ -210,5 +210,3 @@ Los siguientes iconos están totalmente descargados y listos para usar en la apl
 40. `x`
 41. `zap`
 42. `zoom-in`
-
-

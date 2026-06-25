@@ -1,90 +1,82 @@
 # CambioFísico — Documentación del Proyecto
 
+Este índice organiza la documentación activa del repositorio. Separa la dirección de producto, la dirección técnica vigente, el sistema web heredado y el archivo histórico.
+
+---
+
 ## Índice
 
-1. [Visión General](#1-visión-general)
-2. [Dirección Tecnológica](./technology-direction.md)
-3. [Arquitectura y Estructura](./ARQUITECTURA.md)
-4. [Modelo Mental](./product/mental-model.md)
-5. [Ingeniería — Sistema heredado](#ingeniería-—-sistema-heredado)
+1. [Visión General](#visión-general)
+2. [Producto](#producto)
+3. [Ingeniería — Dirección vigente](#ingeniería--dirección-vigente)
+4. [Ingeniería — Sistema heredado](#ingeniería--sistema-heredado)
+5. [Decisiones de arquitectura (ADR)](#decisiones-de-arquitectura-adr)
 6. [Archivo histórico](#archivo-histórico)
 
 ---
 
-## 1. Visión General
+## Visión General
 
-**CambioFísico** es una aplicación web local de seguimiento de recomposición corporal durante 90 días. Toda la información se almacena **únicamente en el ordenador del usuario**: no hay nube, no hay cuentas, no hay conexión a internet requerida.
+**CambioFísico** es una plataforma personal local-first para registrar, comprender y orientar la propia vida. El producto evoluciona hacia una aplicación móvil con SQLite local; la aplicación web existente se conserva como sistema heredado útil para mantenimiento, depuración y posible migración de datos.
 
-### Objetivo personal
-- Peso inicial: **76,5 kg** · Altura: **1,72 m**
-- Meta: reducir grasa abdominal, volver al gimnasio, mejorar postura y rutina
-- Duración: **90 días**
+Para contexto conceptual del producto, consultar primero:
 
-### Qué registra la app
+- [`ai_context.md`](../ai_context.md) — constitución conceptual del proyecto
+- [`product/mental-model.md`](./product/mental-model.md) — modelo mental del dominio
 
-Cada día el usuario puede registrar:
-- Peso corporal y datos de sueño
-- Tipo y duración del entrenamiento
-- Comidas por franja horaria (desayuno, almuerzo, cena, otro)
-- Bienestar subjetivo: hinchazón, energía, hambre, ánimo (escala 1–5)
-- Notas libres y foto de progreso
+Para dirección técnica activa del monorepo:
 
-### Cómo funciona
+- [`engineering/technology-direction.md`](./engineering/technology-direction.md)
+- ADRs en [`docs/adr/`](./adr/)
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  Navegador (localhost:5173)                                  │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │  React + TypeScript + Tailwind CSS                  │    │
-│  │  (Vite dev server)                                  │    │
-│  └─────────────────┬───────────────────────────────────┘    │
-│                    │ fetch /api/* (proxy Vite)               │
-└────────────────────┼────────────────────────────────────────┘
-                     │
-┌────────────────────▼────────────────────────────────────────┐
-│  Node.js + Express (localhost:3001)                          │
-│  ┌────────────────────────────────────────────────────┐     │
-│  │  Routes → Controllers → Services → Repositories    │     │
-│  └────────────────────┬───────────────────────────────┘     │
-│                        │                                     │
-│  ┌─────────────────────▼──────────────┐                     │
-│  │  SQLite (sql.js / WASM)            │                     │
-│  │  ../data/fitness.sqlite            │                     │
-│  └────────────────────────────────────┘                     │
-│  ┌────────────────────────────────────┐                     │
-│  │  Fotos: ../data/photos/            │                     │
-│  └────────────────────────────────────┘                     │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Arrancar la app
-
-```bash
-# Terminal 1 — Backend
-cd CambioFisico/backend && npm run dev
-
-# Terminal 2 — Frontend
-cd CambioFisico/frontend && npm run dev
-
-# Abrir en el navegador:
-# http://localhost:5173
-```
+Para trabajar sobre la aplicación web heredada, usar exclusivamente los documentos `legacy-web-*` listados más abajo.
 
 ---
 
-## Archivo histórico
+## Producto
 
-Los siguientes documentos pertenecen a fases anteriores del proyecto y se conservan únicamente como registro de la evolución histórica de CambioFísico. **No deben utilizarse como fuente de verdad para el desarrollo, producto, UX o arquitectura, y no deben cargarse como contexto por defecto para IAs**:
+Documentación activa de producto, dominio y descubrimientos en validación:
 
-*   [product-discovery-legacy.md](./archive/product-discovery-legacy.md): Documento de Product Discovery original (MVP inicial y roadmap legacy).
-*   [product-manifesto-legacy.md](./archive/product-manifesto-legacy.md): Manifiesto de producto original (visión inicial modular y roadmap de negocio legacy).
+*   [mental-model.md](./product/mental-model.md): Modelo mental y fundamento conceptual del producto.
+*   [discoveries/](./product/discoveries/): Laboratorio de descubrimientos provisionales antes de consolidarse en documentos estables.
+
+---
+
+## Ingeniería — Dirección vigente
+
+Documentación que describe la dirección técnica actual del proyecto y las decisiones aprobadas:
+
+*   [technology-direction.md](./engineering/technology-direction.md): Stack, dependencias y convenciones técnicas vigentes del monorepo.
+*   [`ai_context.md`](../ai_context.md): Principios de ingeniería y contexto para IAs y desarrolladores.
+*   [adr/](./adr/): Registro de decisiones de arquitectura (monorepo, Expo, persistencia, etc.).
 
 ---
 
 ## Ingeniería — Sistema heredado
 
-Los siguientes documentos son referencias técnicas del software y bases de datos construidos para la aplicación web anterior de CambioFísico. **No deben utilizarse para diseñar el modelo de dominio futuro, planificar la base de datos de la aplicación móvil, definir producto, UX, arquitectura futura o aplicación móvil, ni cargarse como contexto por defecto**:
+Referencias técnicas del software web construido antes de la evolución hacia la app móvil. **No deben cargarse por defecto en conversaciones de producto, UX, dominio, app móvil o arquitectura futura**:
 
-*   [legacy-web-development.md](./engineering/legacy-web-development.md): Guía de mantenimiento de la aplicación web heredada (arranque, depuración, comandos y convenciones del código existente). No es documentación general del proyecto.
-*   [legacy-web-api.md](./engineering/legacy-web-api.md): Referencia de los endpoints HTTP del backend Express existente. No define contratos futuros del producto.
-*   [legacy-web-schema.md](./engineering/legacy-web-schema.md): Esquema de base de datos SQLite e interfaces TypeScript de la aplicación web heredada.
+*   [legacy-web-architecture.md](./engineering/legacy-web-architecture.md): Estructura técnica de la app web heredada (Vite + Express + `sql.js`).
+*   [legacy-web-development.md](./engineering/legacy-web-development.md): Arranque, depuración, comandos y convenciones del código heredado.
+*   [legacy-web-api.md](./engineering/legacy-web-api.md): Endpoints HTTP del backend Express existente.
+*   [legacy-web-schema.md](./engineering/legacy-web-schema.md): Esquema SQLite e interfaces TypeScript del sistema heredado.
+
+---
+
+## Decisiones de arquitectura (ADR)
+
+Registro de decisiones técnicas aprobadas en [`docs/adr/`](./adr/):
+
+*   [0001-monorepo-tooling.md](./adr/0001-monorepo-tooling.md)
+*   [0002-backend-nestjs.md](./adr/0002-backend-nestjs.md)
+*   [0003-mobile-expo.md](./adr/0003-mobile-expo.md)
+*   [0004-persistence-prisma-sqlite.md](./adr/0004-persistence-prisma-sqlite.md)
+
+---
+
+## Archivo histórico
+
+Documentos de fases anteriores conservados como registro histórico. **No deben utilizarse como fuente de verdad para desarrollo, producto, UX o arquitectura, ni cargarse como contexto por defecto para IAs**:
+
+*   [product-discovery-legacy.md](./archive/product-discovery-legacy.md): Product Discovery original (MVP inicial y roadmap legacy).
+*   [product-manifesto-legacy.md](./archive/product-manifesto-legacy.md): Manifiesto de producto original (visión modular inicial).

@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS entries (
 );
 ```
 
-### Interfaz TypeScript (`frontend/src/types/entry.ts`)
+### Interfaz TypeScript (`apps/web/src/types/entry.ts`)
 
 ```typescript
 export interface Entry {
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS recipes (
 );
 ```
 
-### Interfaz TypeScript (`frontend/src/types/recipe.ts`)
+### Interfaz TypeScript (`apps/web/src/types/recipe.ts`)
 
 ```typescript
 export interface Recipe {
