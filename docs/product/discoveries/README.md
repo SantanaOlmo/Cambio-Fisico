@@ -13,6 +13,10 @@ Este directorio actúa como un **laboratorio de ideas en fase de validación**. 
 | **D003** | [Construir el futuro](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D003-construir-el-futuro.md) | Provisional | 2026-06-25 | La plataforma funciona como superficie de claridad para actuar en el presente en vez de archivar el pasado. |
 | **D004** | [Adaptabilidad al foco vital](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D004-registro-etapa-vida.md) | Provisional | 2026-06-25 | La experiencia se expande o contrae para adaptarse al foco vital prioritario del usuario en cada etapa. |
 | **D005** | [Espejo, no definición](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D005-espejo-no-definicion.md) | Provisional | 2026-06-25 | La plataforma no califica ni encasilla al usuario; le devuelve una perspectiva rica y honesta para decidir por sí mismo. |
+| **D006** | [La consciencia es el verdadero producto](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D006-consciencia-verdadero-producto.md) | Provisional | 2026-06-25 | El propósito de la plataforma es la autoconsciencia para dirigir la vida, no almacenar datos o estadísticas. |
+| **D007** | [El dominio son las experiencias, no los módulos](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D007-dominio-experiencias.md) | Provisional | 2026-06-25 | El dominio del producto gira en torno a las experiencias humanas integradas, no a módulos o funcionalidades aisladas. |
+| **D008** | [La vida no se divide en módulos](file:///c:/Users/alber/Desktop/proyectos/CambioFisico/docs/product/discoveries/D008-vida-sin-modulos.md) | Provisional | 2026-06-25 | Principio de UX de continuidad y homogeneidad visual en el registro de la vida sin silos funcionales. |
+
 
 ---
 
