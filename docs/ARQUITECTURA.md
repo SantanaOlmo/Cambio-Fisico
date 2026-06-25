@@ -245,3 +245,103 @@ El panel de control (`DashboardPage.tsx`) agrega una sección de **Frecuencia de
 *   Cada elemento tiene una **barra de progreso visual de fondo** que representa su porcentaje de consumo relativo al elemento número uno.
 *   Permite hacer clic directo en las recetas vinculadas para ver sus detalles.
 
+---
+
+## Arquitectura Modular del Producto
+
+El diseño del software sigue un enfoque de **Core Platform + Feature Modules** (Plataforma Núcleo + Módulos de Características) para permitir que el producto crezca añadiendo nuevas capacidades sin requerir refactorizaciones de las bases del sistema.
+
+### El Núcleo de la Plataforma (Core)
+El **Core** es el motor central y provee las abstracciones e infraestructura comunes compartidas por todas las características:
+*   **Timeline:** El registro cronológico unificado donde confluyen los eventos diarios.
+*   **Metrics:** Motor de agregación matemática y cálculo de medias/evoluciones.
+*   **Insights:** Procesador de reglas de negocio para extraer conclusiones de los datos.
+*   **AI Context:** Adaptador y gestor de datos de usuario estructurados para alimentar modelos de lenguaje locales o en la nube.
+*   **Module Registry:** El cargador que define qué módulos funcionales están activos y registra sus menús, rutas y hooks.
+*   **Shared UI/UX patterns:** Tokens de diseño, layouts y componentes atómicos reutilizables (inputs, modales, toasts).
+*   **Local-first storage:** Abstracción asíncrona de base de datos local (Prisma Client con SQLite en local y SQLite nativo en Expo móvil).
+
+### Módulos Iniciales (Foco Actual)
+Se implementan sobre el Core respondiendo a las necesidades inmediatas de CambioFísico:
+*   **Nutrition:** Registro estructurado por comidas independientes (desayuno, almuerzo, cena, snacks).
+*   **Recipes:** Recetario personal en Markdown con autocompletado inteligente.
+*   **Fitness:** Registro de entrenamientos físicos y autocompletado de disciplinas con catálogo dinámico local.
+*   **Health Metrics:** Monitorización de peso corporal, horas/calidad de sueño y ratings de bienestar subjetivos (hinchazón digestiva, energía, estado de ánimo, hambre).
+
+### Módulos Futuros (Extensibilidad)
+El Core expone interfaces preparadas para enchufar módulos adicionales en fases avanzadas:
+*   **Travel:** Bitácoras de viajes, equipaje, y fotos geolocalizadas.
+*   **Music:** Vinculación de canciones y listas de reproducción a entrenamientos o estados de ánimo.
+*   **Learning:** Registro de lecturas, cursos, notas de estudio y hábitos de aprendizaje.
+*   **Habits:** Seguimiento de hábitos generales gamificados (hidratación, meditación, desconexión de pantallas).
+*   **Physiotherapy / Patient Tracking:** Panel para profesionales de la salud con logs de lesiones, tratamientos y progresos musculares de sus clientes o pacientes.
+
+---
+
+## Principios Fundamentales de Ingeniería
+
+Cualquier propuesta o modificación de código debe evaluarse de acuerdo con las siguientes directrices:
+
+1.  **Offline First:** Toda funcionalidad principal de registro y consulta de datos debe operar sin conexión de forma predeterminada. La nube es un añadido futuro opcional, no una dependencia obligatoria.
+2.  **API First:** La verdad y las reglas de negocio viven exclusivamente en el backend (API). Los clientes son capas de presentación y persistencia local sin lógica pesada de negocio.
+3.  **Shared Contracts (Contratos Compartidos):** Los tipos de datos TypeScript y esquemas de validación Zod se mantienen en un único paquete común (`packages/shared`). Cero duplicación.
+4.  **Type Safety Estricto:** Evitar el uso de `any` o de casteos inseguros. Toda comunicación debe estar fuertemente tipada en tiempo de compilación.
+5.  **Clean Architecture:** El dominio, la infraestructura, la presentación y la persistencia de datos deben mantenerse desacoplados. Ningún componente visual React contendrá código SQL o llamadas fetch directas.
+6.  **Evolución Gradual:** No se realizarán migraciones destructivas (Big Bang). Express y NestJS coexisten y se portan progresivamente. SQLite se mantiene local y PostgreSQL queda bloqueado hasta la fase multiusuario.
+7.  **Simplicidad (Evitar Overengineering):** Elegir siempre la solución más simple que funcione sin limitar la evolución futura.
+
+---
+
+## Evolución Arquitectónica por Fases
+
+El crecimiento del producto está estructurado en 4 fases incrementales para asegurar un desarrollo sostenible:
+
+```mermaid
+graph TD
+    subgraph Fase 1: Prototipo Local (Fase Actual)
+        A1[React Web] --> A2[Express API]
+        A2 --> A3[(sqlite.js WASM)]
+    end
+
+    subgraph Fase 2: Estructura Profesional
+        B1[React Web]
+        B2[Expo Mobile]
+        B1 & B2 --> B3[NestJS API incremental]
+        B3 --> B4[(Prisma + SQLite Local)]
+        B3 --> B5[shared-package]
+    end
+
+    subgraph Fase 3: Multiusuario y Sincronización
+        C1[React Web]
+        C2[Expo Mobile]
+        C1 & C2 --> C3[NestJS API]
+        C3 --> C4[Autenticación / Cookies]
+        C3 --> C5[Sync Manager LWW]
+        C3 --> C6[(Prisma + PostgreSQL)]
+        C3 --> C7[AWS S3 / Storage]
+    end
+
+    subgraph Fase 4: Producto SaaS
+        D1[Web & Mobile] --> D2[NestJS API / Workers]
+        D2 --> D3[SaaS Billing Stripe]
+        D2 --> D4[(PostgreSQL Replicas)]
+        D2 --> D5[Observabilidad Pino / OTel]
+    end
+
+    Fase 1 --> Fase 2
+    Fase 2 --> Fase 3
+    Fase 3 --> Fase 4
+```
+
+---
+
+## Non-Goals (Tecnologías Descartadas Temporalmente)
+
+Para evitar la complejidad prematura, se excluyen explícitamente las siguientes tecnologías del roadmap inmediato:
+*   **Orquestadores de contenedores (Kubernetes):** Dev/Prod se gestiona con Docker y Docker Compose simple.
+*   **Arquitecturas de Microservicios:** Mantenemos un monolito modular con inyección de dependencias en NestJS.
+*   **CQRS y Event Sourcing (Kafka, RabbitMQ):** SQLite y PostgreSQL manejan lecturas y escrituras mediante Prisma de forma directa y síncrona.
+*   **Cachés distribuidas (Redis) o NoSQL (MongoDB):** Indexación y persistencia relacional pura.
+*   **Serverless complejo (AWS Lambda):** Mantenemos servidores backend persistentes en ejecución.
+
+
