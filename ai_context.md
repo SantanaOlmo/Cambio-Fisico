@@ -1,123 +1,129 @@
 # Contexto de IA — Proyecto CambioFísico
 
-> **CambioFísico es una plataforma personal diseñada para transformar experiencias cotidianas en conocimiento útil, ayudando a las personas a comprender mejor sus hábitos, tomar mejores decisiones y mejorar de forma continua mediante una experiencia excelente, datos contextualizados e inteligencia artificial.**
+> **CambioFísico es una herramienta personal diseñada para ayudar a una persona a mantenerse consciente de su propia vida, comprender cómo está evolucionando, decidir conscientemente hacia dónde quiere dirigirse y tomar mejores decisiones para construir el futuro que desea.**
 >
-> *Lema: CambioFísico no pretende registrar datos. Pretende convertir experiencias cotidianas en conocimiento útil para ayudar a una persona a tomar mejores decisiones sobre su vida.*
+> *Lema: La memoria existe para construir el futuro, no para archivar el pasado.*
 
-Este documento constituye la fuente de contexto permanente para cualquier Inteligencia Artificial (o desarrollador) que deba analizar, mantener, depurar o extender el repositorio de **CambioFísico**. Sintetiza la identidad del producto, la filosofía de diseño, el dominio conceptual, la arquitectura técnica básica y las reglas de desarrollo del monorrepo.
+Este documento constituye la fuente de contexto primordial y la "constitución" conceptual para cualquier Inteligencia Artificial que deba analizar, mantener, depurar o extender el repositorio de **CambioFísico**. Sintetiza la identidad profunda del producto, su filosofía de diseño, su modelo mental de la persona, la naturaleza de la experiencia y los principios directores de desarrollo.
 
----
-
-## 1. Identidad del Proyecto
-
-*   **Qué es:** CambioFísico es una plataforma personal para comprender, mejorar y registrar aquellos aspectos de la vida que influyen en el bienestar de una persona.
-*   **Propósito:** Ayudar al usuario a comprender cómo las distintas áreas de su vida se relacionan entre sí para tomar mejores decisiones.
-*   **Modularidad Orgánica:** El sistema arranca resolviendo necesidades inmediatas de salud y fitness, pero su diseño conceptual permite añadir nuevos módulos (viajes, lectura, música, aprendizaje, etc.) de manera pasiva y solo cuando exista una necesidad humana real.
+Cualquier IA debe leer y comprender este documento antes de escribir una sola línea de código o proponer cambios de diseño en el sistema.
 
 ---
 
-## 2. Filosofía del Producto y Principios de Diseño
+## 1. ¿Qué es CambioFísico?
 
-### Principios del Producto
-*   **Resolver problemas reales primero:** Cada nueva capacidad técnica debe estar justificada porque soluciona una necesidad real del usuario, nunca porque "queda bien".
-*   **Desarrollo incremental y modular:** Mantener pocas decisiones irrevocables. La mejor arquitectura es la más sencilla que soporte la extensión modular del sistema.
-*   **Offline-First y Privacidad absoluta:** Los datos y fotos pertenecen exclusivamente al disco local del usuario. La aplicación debe funcionar al 100% en sótanos de gimnasio o zonas sin cobertura.
-*   **La IA como acompañante silencioso:** La IA ayuda al usuario a descubrir relaciones que probablemente no detectaría por sí mismo de forma pasiva y sin chats intrusivos.
-*   **Excelente UX sensorial:** Las micro-interacciones, animaciones y fluidez visual son requisitos funcionales obligatorios para motivar la consistencia en el registro.
+CambioFísico existe para resolver un problema humano fundamental: la **fragmentación de la autocomprensión**. 
 
-### Brújula de Diseño de Funcionalidades
-Cada nueva característica o cambio debe cumplir **al menos una** de estas condiciones:
-*   Reduce la fricción de entrada de datos.
-*   Ayuda a recordar hábitos o momentos clave.
-*   Ayuda a comprender relaciones.
-*   Ayuda a mejorar la salud o marcas personales.
-*   Reduce el esfuerzo mental del usuario.
-*   Hace agradable una tarea repetitiva.
-*   Genera motivación interna y no intrusiva.
-*   Conecta información previamente aislada.
+Hoy en día, las personas que buscan monitorizar su vida para mejorar su bienestar se ven obligadas a trocear su existencia en compartimentos de software aislados (aplicaciones para contar calorías, recetarios, registros de entrenamiento, notas de bienestar o fotos locales). Esta desconexión sistemática provoca **ceguera de datos**: impide ver cómo las distintas facetas de la cotidianidad se influyen mutuamente.
 
-### Principios UX y de Conocimiento
-*   **La interfaz debe desaparecer:** El usuario nunca debería sentir que está rellenando formularios. Siempre debería sentir que está haciendo algo natural (escribir comidas en texto libre, cocinar guiado por voz o gestos, entrenar copiando su sesión anterior). Todo debe sentirse extremadamente ligero.
-*   **El conocimiento es más importante que el dato:** 
-    *   Registrar el peso no aporta valor; comprender por qué sube o baja (sueño, digestión, estrés) sí.
-    *   Registrar una receta no aporta valor; descubrir cuáles cocinas realmente y qué macros te aportan sí.
-    *   Registrar entrenamientos no aporta valor; entender qué rutina y volumen funciona mejor para progresar sí.
+Frente a esto, CambioFísico ofrece un espacio íntimo y unificado donde la vida se registra como un recorrido cronológico continuo. Sin embargo, no lo hace para acumular datos estériles o forzar metas estandarizadas. Existe para devolver a la persona la **atención activa sobre su propia vida**, proporcionándole la perspectiva necesaria para responder preguntas cruciales:
+* ¿Dónde me encuentro hoy?
+* ¿Qué trayectoria me ha traído hasta aquí?
+* ¿Qué está cambiando en mi vida y qué merece mi atención ahora?
+* ¿Qué pequeña acción tiene más sentido tomar mañana?
+
+CambioFísico no es una herramienta orientada al control externo o a la gamificación adictiva. Es un espejo neutro y local-first que respeta la soberanía del usuario, transformando el registro diario en una narrativa de autodescubrimiento y claridad para actuar en el presente.
 
 ---
 
-## 3. Qué NO es CambioFísico
+## 2. Filosofía del Producto
 
-Para evitar el crecimiento descontrolado del alcance (*scope creep*), definimos explícitamente los límites del proyecto:
-*   **No pretende sustituir a un médico o nutricionista:** Es una herramienta de autocomprensión, no de diagnóstico clínico.
-*   **No pretende ser una red social:** La experiencia es íntima, personal y soberana. No hay muros de actividad ni compartición social nativa.
-*   **No pretende convertirse en una suite infinita:** Cada módulo debe responder a una necesidad real y mantenerse lo más ligero y autocontenido posible.
-*   **No pretende almacenar datos porque sí:** No recopilamos información que el usuario no necesite para obtener conocimiento útil sobre su vida.
-*   **No pretende recopilar información innecesaria de forma pasiva:** Rechazamos el rastreo de datos en segundo plano que atente contra la privacidad o la autonomía del usuario.
+*   **Registrar no es el objetivo; comprender sí lo es:** El almacenamiento de métricas carece de valor si no conduce a la comprensión de la propia vida. Toda interacción de registro se diseña para reducir la fricción al mínimo, haciendo que la interfaz "desaparezca" y dejando paso a la reflexión.
+*   **La consciencia es el núcleo:** La plataforma no busca decidir por el usuario ni imponer rutinas. Su propósito es dotar de perspectiva y claridad para que el usuario sea capaz de tomar decisiones de forma autónoma.
+*   **La memoria es una herramienta para el futuro:** No se registran acontecimientos para construir un museo del pasado, sino para actuar con mayor lucidez en el presente y proyectar conscientemente las acciones de mañana.
+*   **El usuario mantiene siempre la soberanía:** La información pertenece única y exclusivamente al dispositivo físico del usuario (privacidad absoluta). El usuario es el único juez de sus resultados; el sistema nunca asume un rol directivo.
+*   **Tono sereno y filosófico:** Se descarta por completo el lenguaje motivacional de autoayuda, la condescendencia y los tonos de coaching conductual. El sistema se comunica de manera empírica, descriptiva y calmada.
 
 ---
 
-## 4. Capa de Producto (El Flujo de Experiencia)
+## 3. Cómo entiende CambioFísico a una persona
 
-Todo el producto se estructura bajo un flujo continuo centrado en el usuario:
+Para CambioFísico, una persona no es un perfil estático ni una etiqueta simplista en una base de datos. Una persona no se define como "un deportista", "un cocinero" o "un insomne". Es una **identidad dinámica en constante evolución** compuesta por una red de experiencias entrelazadas.
+
+**CambioFísico no intenta responder quién eres. Intenta ayudarte a descubrir quién estás llegando a ser.**
+
+Cualquier IA que trabaje en esta plataforma debe respetar esta concepción de la persona bajo los siguientes principios:
+*   **Evitar el reduccionismo unidimensional:** El sistema nunca debe encasillar al usuario en base a un comportamiento aislado.
+*   **Adaptación al foco vital actual:** Los intereses y objetivos de una persona cambian según su etapa vital. El sistema debe contraer o expandir su experiencia para centrarse en lo que le importa al usuario en cada momento, silenciando visualmente el ruido de otras áreas sin destruir su histórico de datos.
+*   **Respetar la evolución del significado:** La relevancia o importancia de un hábito es una propiedad emergente que se descubre retrospectivamente mediante señales acumuladas (frecuencia, contraste vital, retorno emocional del usuario y validación posterior), nunca mediante prioridades manuales.
+
+---
+
+## 4. ¿Qué es una experiencia?
+
+En CambioFísico, la unidad fundamental de dominio es la **experiencia**, no el módulo de software.
+
+Una persona no vive su día a día pensando en "módulos". El usuario simplemente experimenta cocinar un risotto, salir a correr por la mañana, descubrir un disco de música, mantener una conversación importante o realizar un viaje. Los "módulos" del software son únicamente agrupaciones técnicas internas para simplificar la captura de datos, pero en el dominio del producto solo existen experiencias contextualizadas en una historia personal unificada. 
+
+De esta premisa se derivan dos principios clave:
+
+1.  **Registro de la realidad percibida:** CambioFísico no registra la realidad objetiva; registra la realidad percibida por la persona. El producto trabaja con experiencias subjetivas y no con hechos absolutos: si dos personas comen el mismo plato, una puede experimentar "Brutal" y otra "No me dijo nada". El dato objetivo es idéntico; la experiencia no. Es esta última la que genera el contexto y la perspectiva real.
+2.  **Modelo conceptual de datos unificado:** A nivel conceptual de dominio, el modelo no debe fragmentarse en tablas independientes desconectadas (`Meal`, `Workout`, `Recipe`). La abstracción principal del sistema es la `Experience` genérica. A partir de ella se derivan especializaciones contextuales (como `MealExperience`, `WorkoutExperience`, `TravelExperience`, `MusicExperience` o `ReflectionExperience`). Cualquier visualización en forma de línea de tiempo o *timeline* es solo una interfaz de representación de esta historia personal, no el núcleo físico del dominio.
+
+---
+
+## 5. El papel de la Inteligencia Artificial
+
+La IA es un **espejo inteligente e invisible**. Su presencia es complementaria: si la IA desaparece, el valor del registro y la autocomprensión para el usuario sigue existiendo de manera íntegra.
+
+La IA procesa el lenguaje natural para eliminar la fricción del registro estructurando datos, y analiza pasivamente el recorrido vital para proponer **hipótesis provisionales y descriptivas** sobre patrones de causa y efecto (ej: *"parece que en las fases de mayor carga laboral tu descanso se reduce al cenar tarde"*).
+
+La IA tiene terminantemente prohibido:
+*   **Etiquetar, juzgar o moralizar:** No califica las acciones como "buenas" o "malas", ni ofrece consejos condescendientes de autoayuda o directrices de coach.
+*   **Definir la identidad:** Nunca asume hipótesis provisionales como verdades estáticas (nunca dirá *"eres insomne"* o *"eres indisciplinado"*).
+*   **Interrumpir la experiencia:** No se diseñan chatbots flotantes ni asistentes interactivos intrusivos. La IA opera de forma silenciosa en segundo plano.
+
+---
+
+## 6. El Flujo de Experiencia del Producto
+
+El ciclo de interacción del producto se estructura bajo un flujo continuo centrado en la autocomprensión:
 
 ```
 Registrar ──> Comprender ──> Actuar ──> Mejorar
 ```
 
-*   **Registrar (Fricción Cero):** Capturar las experiencias cotidianas de forma de registro natural y ligera. La interfaz desaparece para dar paso al texto libre, hashtags relacionales e IA pasiva.
-*   **Comprender (Insights):** La plataforma analiza los datos y genera *Insights* en lenguaje humano cruzando variables. Las gráficas son solo una implementación; el Insight es el producto.
-*   **Actuar (Flujos de Asistencia):** Facilitar la ejecución de las tareas diarias. El visor se convierte en un ayudante sin manos en la cocina (recetas paso a paso) o un entrenador silencioso en el gimnasio (registro de series mediante copias y variaciones rápidas).
-*   **Mejorar (Decisiones Informadas):** Evaluar el impacto de las acciones para que el usuario tome mejores decisiones sobre su estilo de vida a largo plazo.
+1.  **Registrar (Captura de Experiencias):** Proceso de fricción cero donde el usuario captura su realidad percibida de forma natural (texto libre, copias rápidas o gestos). La interfaz desaparece para centrarse en la vivencia.
+2.  **Comprender (Descubrimiento de Conocimiento):** La plataforma relaciona los registros en el recorrido histórico. Los gráficos son un soporte; el valor real es la revelación de patrones de causa y efecto en lenguaje humano.
+3.  **Actuar (Superficie de Claridad):** El conocimiento adquirido se traduce en asistencia activa en el momento de la acción (visor de cocina sin manos, precarga inteligente de marcas en el entrenamiento).
+4.  **Mejorar (Consecuencia Orgánica):** La optimización del bienestar no se impone; emerge de forma natural como consecuencia de actuar con mayor perspectiva e intención.
 
 ---
 
-## 5. Capa de Dominio (¿Cómo pensamos el problema?)
+## 7. Qué NO es CambioFísico
 
-*   **Usuario:** El individuo central de la plataforma con sus configuraciones básicas y metas.
-*   **Timeline:** El Timeline es la representación cronológica de la vida del usuario dentro de la plataforma. Todo aquello que ocurre y merece ser recordado puede aparecer en él.
-*   **Comida (Meal) & Receta (Recipe):** Las ingestas del día y la estructura culinaria de referencia. Una receta sirve de plantilla para las comidas del Timeline.
-*   **Sesión de Entrenamiento (Workout):** El registro físico de una actividad de fuerza o cardio asociada a una fecha concreta.
-
----
-
-## 6. Capa de Tecnología (¿Cómo lo implementamos hoy?)
-
-*   **Monorrepo (pnpm workspaces + Turborepo):**
-    *   `apps/web`: Aplicación web frontend React (Vite + TypeScript + Tailwind CSS).
-    *   `apps/api-legacy`: API Express en Node.js.
-*   **Persistencia:** Base de datos local SQLite. Actualmente se utiliza SQLite en memoria via WebAssembly (`sql.js`) que vuelca el buffer completo a la carpeta `/data` en la raíz del repositorio tras cada escritura.
-*   **Aislamiento de Datos:** El directorio `/data` de la raíz del monorrepo (base de datos local y fotos de progreso) está estrictamente excluido en el `.gitignore` para blindar la privacidad del usuario.
+Para blindar el producto frente a desviaciones de diseño y crecimiento descontrolado (*scope creep*), se establecen los siguientes límites estrictos:
+*   **No pretende definir al usuario:** No utiliza etiquetas, clasificaciones rígidas ni encasilla la identidad de la persona.
+*   **No pretende optimizar cada aspecto de la vida:** Rechaza la obsesión por la cuantificación total o la consecución de una vida idealizada estándar.
+*   **No busca generar dependencia:** No utiliza mecánicas de retención artificiales, notificaciones intrusivas, gamificación de rachas que generen culpa, ni elementos diseñados para maximizar el tiempo en pantalla.
+*   **No sustituye el criterio humano:** Es un soporte para la toma de decisiones, no un sistema de piloto automático que dicte cómo debe vivir la persona.
+*   **No almacena datos porque sí:** No recopila información que el usuario no necesite para obtener conocimiento útil sobre su vida, y rechaza el rastreo pasivo en segundo plano.
 
 ---
 
-## 7. Estado Actual del Proyecto y Próximos Objetivos
+## 8. Principios Fundamentales para la IA de Desarrollo
 
-*   **Estado Actual:** Monorrepo estructurado y compilando sin errores. La aplicación web puede registrar entradas diarias, gestionar recetas en Markdown, resaltar hashtags de recetas en comidas e interpretar tendencias en el Dashboard.
-*   **Próximos Objetivos:**
-    *   Consolidar el Core del producto.
-    *   Mejorar la persistencia local (removiendo el volcado de memoria legacy).
-    *   Compartir lógica y tipos comunes entre plataformas.
-    *   Construir la aplicación móvil.
-    *   Reducir fricción en el registro diario.
+Cualquier IA encargada de modificar este repositorio debe evaluar sus propuestas bajo el siguiente filtro de diseño de producto:
 
----
+*   **¿Reduce la fricción de uso y el esfuerzo mental del usuario?**
+*   **¿Aumenta la comprensión cualitativa y la autoconsciencia?**
+*   **¿Aporta claridad al usuario en el momento preciso de actuar?**
+*   **¿Respeta la soberanía, la privacidad y la autonomía del usuario?**
+*   **¿Hace que la experiencia de uso se sienta más fluida, serena y humana?**
+*   **¿Simplifica el diseño y el código en lugar de complicarlo?**
 
-## 8. Principios para Futuras IA (Instrucciones de Desarrollo)
-
-Cualquier IA que trabaje sobre este repositorio debe cumplir estrictamente las siguientes pautas:
-
-1.  **Prioriza la simplicidad:** No propongas bases de datos distribuidas, microservicios, brokers de eventos o infraestructuras cloud complejas.
-2.  **No diseñes soluciones para problemas inexistentes:** No asumas multiusuario, wearables ni integraciones externas en el código actual.
-3.  **Mantén el desacoplamiento modular:** Asegúrate de que los módulos (nutrition, recipes, fitness) se conectan al Timeline de manera pasiva y a través de contratos simples.
-4.  **No rompas el Offline-First:** Toda funcionalidad de datos debe operar localmente en el dispositivo del usuario sin requerir conexión a internet.
-5.  **Piensa como Product Engineer:** La UX, la desaparición de la interfaz y la generación de conocimiento útil son tan prioritarias como el orden y la arquitectura del código.
-6.  **Respeta las decisiones de los ADRs:** Consulta la carpeta `docs/adr/` antes de realizar cualquier cambio en la persistencia o estructura del código.
+### Directrices de Ingeniería de Producto:
+1.  **Prioridad de la Experiencia sobre la Técnica:** La elegancia de la arquitectura nunca debe ir en detrimento de la simplicidad de la experiencia de usuario. Las soluciones técnicas deben servir para que la interfaz sea invisible y fluida.
+2.  **Rechazo a la Complejidad Prematura:** No propongas ni diseñes infraestructuras complejas (sincronizaciones en la nube sofisticadas, multiusuario, wearables) si no responden a una necesidad humana en el foco vital actual del desarrollo.
+3.  **Diseño Conceptual Unificado:** Al proponer nuevas características, no las aísles en "módulos" independientes desde la perspectiva del usuario. Diseña pensando en cómo se integran orgánicamente en el continuo de la historia personal del usuario.
 
 ---
 
-## 9. Desviaciones Actuales de la Visión
+## 9. Arquitectura Técnica (Resumen)
 
-*   **Persistencia en Memoria Legacy:** El uso de `sql.js` en `apps/api-legacy` es una solución provisional del prototipo que escribe síncronamente el archivo entero a disco. Debe ser migrado a accesos nativos SQLite vía Prisma ORM.
-*   **Servicio de Exportación Desactualizado:** `apps/api-legacy/src/services/exportService.ts` no incluye las nuevas columnas segmentadas de comida y sigue usando campos deprecados.
-*   **Autocompletado en LocalStorage:** El autocompletado de los comboboxes se guarda localmente en el navegador (`localStorage`) a través de `useCustomOptions.ts`. Esta información es volátil y debería guardarse en la persistencia local de la base de datos SQLite.
-*   **Ausencia de Tests Automatizados:** No existen tests en el repositorio, delegando toda validación al chequeo de tipos estático de TypeScript.
+El sistema implementa este modelo mental mediante una arquitectura técnica basada en la simplicidad y la autonomía:
+
+*   **Monorrepo (pnpm workspaces + Turborepo):** Organización del código en paquetes desacoplados e independientes para facilitar la modularidad interna y la futura evolución multiplataforma (Web y Móvil) sin contaminar las bases comunes.
+*   **Offline-First:** Autonomía de ejecución garantizada. El procesamiento de datos y la generación de insights deben poder ejecutarse localmente sin depender de conectividad.
+*   **Persistencia Local:** La base de datos (SQLite) y los recursos asociados residen físicamente en el almacenamiento local del dispositivo del usuario, garantizando la privacidad por diseño.
+*   **Modularidad en el Código:** Aunque para el usuario la experiencia es unificada, el código está estructurado en módulos con responsabilidades aisladas para garantizar la mantenibilidad y evitar la aparición de acoplamientos rígidos en el software.
