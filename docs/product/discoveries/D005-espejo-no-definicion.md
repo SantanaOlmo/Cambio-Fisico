@@ -12,7 +12,7 @@ Provisional
 
 ## Descubrimiento
 
-La plataforma no debe encasillar, calificar ni etiquetar al usuario en base a sus hábitos o datos cotidianos. CambioFísico no le dice al usuario quién es (ej. catalogarlo como "inactivo", "obeso" o "consistente"). En su lugar, el producto debe devolverle una perspectiva lo suficientemente rica, honesta y altamente contextualizada para que el usuario pueda verse reflejado con absoluta claridad, comprenda sus propios ritmos y extraiga sus propias conclusiones de forma autónoma.
+La plataforma no debe encasillar, calificar ni etiquetar al usuario en base a sus hábitos o datos cotidianos. CambioFísico no le dice al usuario quién es (ej. catalogarlo como "inactivo", "obeso" o "consistente"). En su lugar, el producto debe devolverle una perspectiva lo suficientemente rica, honesta y altamente contextualizada para que el usuario pueda verse reflejado con absoluta claridad, comprenda sus propios ritmos y extraiga sus propias conclusiones de forma autónoma. Si bien la IA de la plataforma puede formular hipótesis provisionales sobre los patrones observados (ej: *"parece que en estas etapas tu descanso se reduce al cenar tarde"*), bajo ningún concepto debe convertir esas hipótesis en definiciones estáticas sobre la identidad del usuario (ej: *"eres una persona insomne"* o *"eres indisciplinado"*).
 
 ---
 
@@ -25,7 +25,7 @@ Tradicionalmente, las aplicaciones de bienestar y salud imponen etiquetas, puntu
 ## Consecuencias
 
 *   **UX/UI:** Se evitan clasificaciones visuales estáticas basadas en colores de alerta (rojo/verde para calificar días o personas) o barras de progreso que castiguen la consistencia. Las visualizaciones deben priorizar la relación empírica entre variables.
-*   **Tono Verbal:** Los textos generados por el sistema y los *Insights* se redactan de manera objetiva, científica y empírica, absteniéndose de dar consejos moralistas, directrices condescendientes o reprimendas automáticas.
+*   **Tono Verbal:** Los textos generados por el sistema y los *Insights* se redactan de manera objetiva, científica y empírica, absteniéndose de dar consejos moralistas, directrices condescendientes o reprimendas automáticas. La IA se limita a proponer hipótesis descriptivas y provisionales sobre los datos (ej: *"en esta fase..."*) sin definir la personalidad del usuario (ej: *"eres..."*).
 *   **Diseño de Metas:** Las metas en el sistema se tratan como hitos de referencia flexibles e instrumentales para la toma de decisiones, no como juicios de éxito o fracaso existencial.
 
 ---

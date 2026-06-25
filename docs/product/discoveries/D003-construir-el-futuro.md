@@ -28,7 +28,7 @@ La mayoría de los trackers se limitan a archivar registros y mostrarlos en dash
 *   **Modos Activos (UX):**
     *   **Recetas:** Pasa de ser un recetario estático a un "Modo Cocina" interactivo (checklist de ingredientes, instrucciones paso a paso, control sin manos y temporizadores).
     *   **Gimnasio:** Pasa de ser una tabla de logs a una "herramienta de perspectiva" que precarga la sesión previa y elimina el esfuerzo mental de registrar las series.
-*   **Insights Accionables:** Las recomendaciones e insights priorizan sugerencias pragmáticas basadas en el contexto del día actual por encima de estadísticas abstractas.
+*   **Insights orientados a decisión:** Los insights proporcionan al usuario relaciones claras en su contexto cotidiano para que pueda decidir con mayor criterio, en lugar de actuar como directrices que dictan qué hacer.
 
 ---
 

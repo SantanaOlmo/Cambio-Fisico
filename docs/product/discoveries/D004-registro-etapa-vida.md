@@ -12,7 +12,7 @@ Provisional
 
 ## Descubrimiento
 
-El usuario no monitoriza de manera uniforme todos los aspectos de su bienestar a lo largo del tiempo. Sus objetivos y focos cambian según el **foco vital actual de su vida** (ej. una fase de recomposición física intensa, una época de alto estrés laboral donde prioriza el sueño, o la recuperación de una lesión). Por lo tanto, la experiencia del producto debe adaptarse a ese foco actual, manteniendo la interfaz despejada de ruidos e inputs que pertenezcan a otras áreas que en este momento no son prioritarias.
+El usuario no monitoriza de manera uniforme todos los aspectos de su bienestar a lo largo del tiempo. Sus objetivos y focos cambian según su **foco vital actual** (ej. una fase de recomposición física intensa, una época de alto estrés laboral donde prioriza el sueño, o la recuperación de una lesión). Por lo tanto, la experiencia del producto debe adaptarse a ese foco actual, manteniendo la interfaz despejada de ruidos e inputs que pertenezcan a otras áreas que en este momento no son prioritarias.
 
 ---
 
