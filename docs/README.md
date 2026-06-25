@@ -79,3 +79,4 @@ cd CambioFisico/frontend && npm run dev
 Los siguientes documentos pertenecen a fases anteriores del proyecto y se conservan únicamente como registro de la evolución histórica de CambioFísico. **No deben utilizarse como fuente de verdad para el desarrollo, producto, UX o arquitectura, y no deben cargarse como contexto por defecto para IAs**:
 
 *   [product-discovery-legacy.md](./archive/product-discovery-legacy.md): Documento de Product Discovery original (MVP inicial y roadmap legacy).
+*   [product-manifesto-legacy.md](./archive/product-manifesto-legacy.md): Manifiesto de producto original (visión inicial modular y roadmap de negocio legacy).

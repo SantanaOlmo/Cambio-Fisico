@@ -1,3 +1,21 @@
+> [!WARNING]
+> ## Documento histórico — No usar como fuente de verdad
+>
+> Este documento pertenece a una fase anterior de CambioFísico.
+>
+> Contiene decisiones, hipótesis y direcciones de producto que pueden estar obsoletas, contradichas o pendientes de validación.
+>
+> No debe utilizarse como fuente de verdad para producto, UX, arquitectura ni implementación.
+>
+> Las fuentes vigentes son:
+>
+> - `ai_context.md`
+> - `docs/product/mental-model.md`
+> - `docs/product/discoveries/`
+> - `docs/adr/`
+>
+> Se conserva únicamente como registro histórico de la evolución del proyecto.
+
 # Manifiesto de Producto — CambioFísico
 
 ## 1. ¿Qué es CambioFísico?
