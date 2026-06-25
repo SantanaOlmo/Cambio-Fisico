@@ -247,6 +247,37 @@ El panel de control (`DashboardPage.tsx`) agrega una sección de **Frecuencia de
 
 ---
 
+## Arquitectura Modular del Producto
+
+El diseño del software sigue un enfoque de **Core Platform + Feature Modules** (Plataforma Núcleo + Módulos de Características) para permitir que el producto crezca añadiendo nuevas capacidades sin requerir refactorizaciones de las bases del sistema.
+
+### El Núcleo de la Plataforma (Core)
+El **Core** es el motor central y provee las abstracciones e infraestructura comunes compartidas por todas las características:
+*   **Timeline:** El registro cronológico unificado donde confluyen los eventos diarios.
+*   **Metrics:** Motor de agregación matemática y cálculo de medias/evoluciones.
+*   **Insights:** Procesador de reglas de negocio para extraer conclusiones de los datos.
+*   **AI Context:** Adaptador y gestor de datos de usuario estructurados para alimentar modelos de lenguaje locales o en la nube.
+*   **Module Registry:** El cargador que define qué módulos funcionales están activos y registra sus menús, rutas y hooks.
+*   **Shared UI/UX patterns:** Tokens de diseño, layouts y componentes atómicos reutilizables (inputs, modales, toasts).
+*   **Local-first storage:** Abstracción asíncrona de base de datos local (Prisma Client con SQLite en local y SQLite nativo en Expo móvil).
+
+### Módulos Iniciales (Foco Actual)
+Se implementan sobre el Core respondiendo a las necesidades inmediatas de CambioFísico:
+*   **Nutrition:** Registro estructurado por comidas independientes (desayuno, almuerzo, cena, snacks).
+*   **Recipes:** Recetario personal en Markdown con autocompletado inteligente.
+*   **Fitness:** Registro de entrenamientos físicos y autocompletado de disciplinas con catálogo dinámico local.
+*   **Health Metrics:** Monitorización de peso corporal, horas/calidad de sueño y ratings de bienestar subjetivos (hinchazón digestiva, energía, estado de ánimo, hambre).
+
+### Módulos Futuros (Extensibilidad)
+El Core expone interfaces preparadas para enchufar módulos adicionales en fases avanzadas:
+*   **Travel:** Bitácoras de viajes, equipaje, y fotos geolocalizadas.
+*   **Music:** Vinculación de canciones y listas de reproducción a entrenamientos o estados de ánimo.
+*   **Learning:** Registro de lecturas, cursos, notas de estudio y hábitos de aprendizaje.
+*   **Habits:** Seguimiento de hábitos generales gamificados (hidratación, meditación, desconexión de pantallas).
+*   **Physiotherapy / Patient Tracking:** Panel para profesionales de la salud con logs de lesiones, tratamientos y progresos musculares de sus clientes o pacientes.
+
+---
+
 ## Principios Fundamentales de Ingeniería
 
 Cualquier propuesta o modificación de código debe evaluarse de acuerdo con las siguientes directrices:
