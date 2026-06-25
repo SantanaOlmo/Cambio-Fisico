@@ -3,7 +3,7 @@
 ## Índice
 
 1. [Visión General](#1-visión-general)
-2. [Tecnologías y Dependencias](./TECNOLOGIAS.md)
+2. [Dirección Tecnológica](./technology-direction.md)
 3. [Arquitectura y Estructura](./ARQUITECTURA.md)
 4. [Modelos de Datos](./MODELOS.md)
 5. [API Reference](./API.md)

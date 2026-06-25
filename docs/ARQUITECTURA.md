@@ -20,7 +20,7 @@ CambioFisico/
 │
 ├── docs/                          ← Esta documentación
 │   ├── README.md
-│   ├── TECNOLOGIAS.md
+│   ├── technology-direction.md
 │   ├── ARQUITECTURA.md
 │   ├── MODELOS.md
 │   ├── API.md
